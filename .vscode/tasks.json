@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Program 1",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/home/sakthi/Sakthi_s File/problem solving/Placement Preparation/DSA/pract",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build1"
+        },
+        {
+            "name": "Program 2",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/program2.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build2"
+        }
+    ]
+}
