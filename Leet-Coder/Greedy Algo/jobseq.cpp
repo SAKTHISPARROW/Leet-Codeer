@@ -1,63 +1,55 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <limits>
+#include <bits/stdc++.h>
 using namespace std;
+struct Job
+{
+    int id;
+    int dead;
+    int profit;
+};
+class sol
+{
+public:
+    bool static compare(Job a, Job b)
+    {
+        return (a.profit > b.profit);
+    }
+    pair<int, int> jobschedule(Job arr[], int n)
+    {
+        sort(arr, arr + n, compare);
+        int maxi = arr[0].dead;
+        for (int i = 1; i < n; i++)
+        {
+            maxi = max(maxi, arr[i].dead);
+        }
+        int slot[maxi];
+        for (int i = 0; i <= maxi; i++)
+        {
+            slot[i] = -1;
+        }
+        int countJ = 0, totprofit = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = arr[i].dead; j > 0; j--)
+            {
+                if (slot[j] == -1)
+                {
+                    slot[j] = i;
+                    countJ++;
+                    totprofit += arr[i].profit;
+                    break;
+                }
+            }
+        }
+        return make_pair(countJ, totprofit);
+    }
+};
 int main()
 {
     int n = 4;
-    vector<vector<int>> v = {{1, 4, 20}, {2, 1, 10}, {3, 2, 40}, {4, 2, 30}};
-    auto comparator = [](const std::vector<int> &a, const std::vector<int> &b)
-    {
-        // Compare the vectors based on their elements (assuming all vectors have the same length)
-        if (a[2] != b[2])
-        {
-            return a[2] > b[2]; // Compare elements at index i
-        }
-        return false; // If all elements are equal, the vectors are considered equal
-    };
-    sort(v.begin(), v.end(), comparator);
-    size_t index = 1; // Index for which you want to find the maximum element
-
-    int maxElement = numeric_limits<int>::min(); // Initialize maxElement with the minimum possible value for an int
-
-    // Iterate through the vectors and find the maximum element at the specified index
-    for (const auto &innerVec : v)
-    {
-        if (index < innerVec.size())
-        {                                                  // Make sure the index is within bounds for the inner vector
-            maxElement = max(maxElement, innerVec[index]); // Update maxElement if a larger element is found
-        }
-    }
-    cout << maxElement << endl;
-    for (const auto &innerVec : v)
-    {
-        for (int elem : innerVec)
-        {
-            cout << elem << " ";
-        }
-        cout << endl;
-    }
-    vector<int> vec(maxElement, 0);
-    for (int i = 1; i <= maxElement; i++)
-    {
-        if (vec[v[i - 1][1]] == 0)
-        {
-            // cout << v[i - 1][1] << " " << v[i - 1][2] << endl;
-            vec[v[i - 1][1]] = v[i - 1][2];
-            cout << v[i - 1][1];
-        }
-        else if (vec[v[i - 1][1]] != 0 && vec[v[i - 1][1] - 1] == 0)
-        {
-            vec[v[i - 1][1] - 1] = v[i - 1][2];
-        }
-        else if (vec[v[i - 1][1]] != 0 && vec[v[i - 1][1] - 1] != 0)
-        {
-            break;
-        }
-    }
-    for (int x : vec)
-        cout << x << " ";
+    Job arr[n] = {{1, 4, 20}, {2, 1, 10}, {3, 2, 40}, {4, 2, 30}};
+    sol j;
+    pair<int, int> ans = j.jobschedule(arr, n);
+    cout << ans.first << " " << ans.second << endl;
 
     return 0;
 }
