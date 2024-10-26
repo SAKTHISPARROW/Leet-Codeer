@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/admin.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/bus.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db_connection.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/entity.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/loghandler.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/passenger.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/seat.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/db_init.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/ticket.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/user.py" dialect="MySQL" />
+  </component>
+</project>
